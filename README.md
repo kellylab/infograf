@@ -11,3 +11,19 @@ Functions:
 `MakeNonRedundantPairs`: helps with pairwise combinatorial analyses of stuff
 
 `RadialNudge`: for visualizing multiple 'shells' of nodes in a circular graph
+
+Installation
+============
+
+If you don't already have `devtools`:
+
+    install.packages("devtools")
+
+Install:
+
+    library(devtools)
+    install_github("wkc1986/infograf")
+
+Use:
+
+    library(infograf)
