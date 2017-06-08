@@ -7,9 +7,10 @@
 #' @param w weights of distributions, length must == ncol(x)
 #'
 #' @return JSD of all distribs in x
+#'
+#' @export
 # library(Matrix)
 genJSD <- function(x, w = NULL) {
-  library(entropy)
   # try to coerce x to a matrix
   if (!(class(x) %in% c("matrix", "dgeMatrix"))) {
     x <- as.matrix(x)
@@ -24,9 +25,9 @@ genJSD <- function(x, w = NULL) {
   wsum <- rowSums(x %*% w)
   # weighted entropy of distributions
   Hi <- sapply(1:n, function(i) {
-    return(entropy.plugin(x[, i], unit = "log2"))
+    return(entropy::entropy.plugin(x[, i], unit = "log2"))
     })
   # the second term returns 1x1 matrix; as.numeric converts to scalar
-  jsd <- entropy.plugin(wsum, unit = "log2") - as.numeric(Hi %*% w)
+  jsd <- entropy::entropy.plugin(wsum, unit = "log2") - as.numeric(Hi %*% w)
   return(jsd)
 }

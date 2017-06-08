@@ -13,11 +13,11 @@
 #'
 #' @examples
 RadialNudge <- function(layout, dr) {
-  coord <- select(layout, x, y)
-  coord <- mutate(coord, theta = atan2(y, x))
-  coord <- mutate(coord, x = x + dr * cos(theta), y = y + dr * sin(theta))
+  coord <- dplyr::select(layout, x, y)
+  coord <- dplyr::mutate(coord, theta = atan2(y, x))
+  coord <- dplyr::mutate(coord, x = x + dr * cos(theta), y = y + dr * sin(theta))
   # dendrogram to igraph and back again
-  layout <- create_layout(den_to_igraph(layout), "manual",
+  layout <- ggraph::create_layout(den_to_igraph(layout), "manual",
                           node.positions = coord
                           )
   return(layout)

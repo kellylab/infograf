@@ -15,7 +15,7 @@
 #' @examples
 MakeDistMatrix <- function(dt, id.x, id.y, value.cn = "distance") {
   formula <- paste(id.x, "~", id.y)
-  dm <- dcast(dt, formula, value.var = value.cn)
+  dm <- data.table::dcast(dt, formula, value.var = value.cn)
   rn <- dm[, get(id.x)]
   dm <- as.matrix(dm[, -1])
   rownames(dm) <- rn

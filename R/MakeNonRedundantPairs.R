@@ -14,7 +14,6 @@
 #' @examples
 MakeNonRedundantPairs <- function(things, prefix = "thing",
                                   suffix = c("i", "j"), sep = ".") {
-  library(data.table)
   N <- length(things)
   x <- lapply(1:N, function(n) {
     if (n == 1) {
@@ -22,8 +21,8 @@ MakeNonRedundantPairs <- function(things, prefix = "thing",
     } else {
       j <- things[-seq(n - 1)]
     }
-    out <- data.table(i = things[n], j = j)
-    setnames(out, paste(prefix, suffix, sep = sep))
+    out <- data.table::data.table(i = things[n], j = j)
+    data.table::setnames(out, paste(prefix, suffix, sep = sep))
     out
   })
   x <- rbindlist(x)

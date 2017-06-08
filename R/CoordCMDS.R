@@ -16,13 +16,13 @@
 #'
 #' @examples
 CoordCMDS <- function(dm, eig = TRUE, ...) {
-  library(data.table)
   fit <- cmdscale(dist(dm), eig = eig, ...)
   xform <- fit$points
-  eigrank <- data.table(rank = seq(length(fit$eig)), value = fit$eig)
+  eigrank <- data.table::data.table(rank = seq(length(fit$eig)),
+                                    value = fit$eig)
   colnames(xform) <- c("x", "y")
   rn <- rownames(xform)
-  xform <- as.data.table(xform)
+  xform <- data.table::as.data.table(xform)
   xform[, sample := rn]
   if (eig) {
     list(points = xform, eigrank = eigrank)
