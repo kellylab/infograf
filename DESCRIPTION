@@ -1,0 +1,15 @@
+Package: infograf
+Title: Grab Bag of Information Theory and Graph Theory Tools 
+Version: 0.0.0.9000
+Authors@R: person("William K.", "Chang", email = "williamkurtischang@gmail.com", role = c("aut", "cre"))
+Description: Various functions for analyses using Shannon information theory methods and graph theoretic analyses.
+Depends: R (>= 3.3.2)
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+Imports:
+    data.table,
+    entropy,
+    ggraph,
+    igraph
