@@ -18,11 +18,11 @@
 CoordCMDS <- function(dm, eig = TRUE, ...) {
   fit <- cmdscale(dist(dm), eig = eig, ...)
   xform <- fit$points
-  eigrank <- data.table::data.table(rank = seq(length(fit$eig)),
-                                    value = fit$eig)
+	eigrank <- data.frame(rank = seq(length(fit$eig)), value = fit$eig)
   colnames(xform) <- c("x", "y")
   rn <- rownames(xform)
-  xform <- data.table::as.data.table(xform)
+	xform <- as.data.frame(xform)
+	xform$sample <- rn
   xform[, sample := rn]
   if (eig) {
     list(points = xform, eigrank = eigrank)
