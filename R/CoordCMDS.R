@@ -23,7 +23,6 @@ CoordCMDS <- function(dm, eig = TRUE, ...) {
   rn <- rownames(xform)
 	xform <- as.data.frame(xform)
 	xform$sample <- rn
-  xform[, sample := rn]
   if (eig) {
     list(points = xform, eigrank = eigrank)
   } else {
